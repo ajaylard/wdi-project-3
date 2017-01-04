@@ -1,6 +1,6 @@
 <div class="novelShow">
   <div class="picture-container jumbotron">
-    <img ng-src="{{ show.novel.image }}">
+    <img ng-src="{{ show.novel.image }}" on-error-src="{{ main.fallbackImage }}">
   </div>
   <div class="centered">
     <div class="content">

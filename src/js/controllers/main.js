@@ -1,9 +1,9 @@
 angular
-  .module("noveList")
-  .controller("mainCtrl", mainCtrl);
+.module("noveList")
+.controller("mainCtrl", mainCtrl);
 
-mainCtrl.$inject = ["$rootScope", "CurrentUserService", "$state"];
-function mainCtrl($rootScope, CurrentUserService, $state) {
+mainCtrl.$inject = ["$rootScope", "CurrentUserService", "$state", 'RandomImage'];
+function mainCtrl($rootScope, CurrentUserService, $state, RandomImage) {
   const vm = this;
 
   vm.user = CurrentUserService.getUser();
@@ -21,5 +21,12 @@ function mainCtrl($rootScope, CurrentUserService, $state) {
   $rootScope.$on("loggedOut", () => {
     vm.user = null;
     $state.go("home");
+  });
+
+  RandomImage
+  .query()
+  .$promise
+  .then(data => {
+    vm.fallbackImage = data.urls.custom;
   });
 }
