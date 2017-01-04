@@ -43,60 +43,60 @@ gulp.task('bower', [
 
 gulp.task('bower:js', () => {
   return gulp.src(bower)
-    .pipe(filter(['**/*.js']))
-    .pipe(concat('_bower.js'))
-    .pipe(gulp.dest(`${src}/js`));
+  .pipe(filter(['**/*.js']))
+  .pipe(concat('_bower.js'))
+  .pipe(gulp.dest(`${src}/js`));
 });
 
 gulp.task('bower:css', () => {
   return gulp.src(bower)
-    .pipe(filter(['**/*.css']))
-    .pipe(concat('_bower.scss'))
-    .pipe(stripCssComments())
-    .pipe(gulp.dest(`${src}/scss`));
+  .pipe(filter(['**/*.css']))
+  .pipe(concat('_bower.scss'))
+  .pipe(stripCssComments())
+  .pipe(gulp.dest(`${src}/scss`));
 });
 
 gulp.task('bower:fonts', () => {
   return gulp.src(bower)
-    .pipe(filter(['**/*.{eot,svg,ttf,woff,woff2}']))
-    .pipe(flatten())
-    .pipe(gulp.dest(`${src}/fonts`));
+  .pipe(filter(['**/*.{eot,svg,ttf,woff,woff2}']))
+  .pipe(flatten())
+  .pipe(gulp.dest(`${src}/fonts`));
 });
 
 // sass
 gulp.task('sass', () => {
-	return gulp.src(`${src}/scss/style.scss`)
-    .pipe(sass(sass()).on('error', sass.logError))
-    .pipe(stripCssComments())
-    .pipe(cleanCSS({ compatibility: "ie8"}))
-    .pipe(flatten())
-    .pipe(autoprefixer())
-    .pipe(gulp.dest(`${dist}/css`))
-    .pipe(livereload());
+  return gulp.src(`${src}/scss/style.scss`)
+  .pipe(sass(sass()).on('error', sass.logError))
+  .pipe(stripCssComments())
+  .pipe(cleanCSS({ compatibility: "ie8"}))
+  .pipe(flatten())
+  .pipe(autoprefixer())
+  .pipe(gulp.dest(`${dist}/css`))
+  .pipe(livereload());
 });
 
 // scripts & es6
 gulp.task("scripts", () => {
   return gulp.src(`${src}/**/*.js`)
-    .pipe(plumber())
-		.pipe(babel({
-			presets: ["es2015"],
-      compact: true,
-      ignore: [
-        '_bower.js',
-      ]
-		}))
-    .pipe(flatten())
-    .pipe(order([
-      "_bower.js",
-      "app.js",
-      "**/*.js"
-    ]))
-    .pipe(concat('app.js'))
-    // .pipe(uglify())
-    .pipe(gulp.dest(`${dist}/js`))
-    .pipe(wait(1500))
-    .pipe(livereload());
+  .pipe(plumber())
+  .pipe(babel({
+    presets: ["es2015"],
+    compact: true,
+    ignore: [
+      '_bower.js',
+    ]
+  }))
+  .pipe(flatten())
+  .pipe(order([
+    "_bower.js",
+    "app.js",
+    "**/*.js"
+  ]))
+  .pipe(concat('app.js'))
+  // .pipe(uglify())
+  .pipe(gulp.dest(`${dist}/js`))
+  .pipe(wait(1500))
+  .pipe(livereload());
 });
 
 function onError(err) {
@@ -113,16 +113,16 @@ gulp.task('copy', [
 // copy fonts from src to dist
 gulp.task("copy:fonts", () => {
   return gulp.src(`${src}/**/*.{eot,svg,ttf,woff,woff2}`)
-    .pipe(gulp.dest(dist));
+  .pipe(gulp.dest(dist));
 });
 // copy images from src to dist
 gulp.task("copy:images", () => {
   return gulp.src(`${src}/**/*.{png,gif,jpg,ico,jpeg}`)
-    .pipe(gulp.dest(dist));
+  .pipe(gulp.dest(dist));
 });
 // copy html from src to dist
 gulp.task("copy:views", () => {
-return gulp.src(`${src}/**/*.html`)
+  return gulp.src(`${src}/**/*.html`)
   .pipe(plumber())
   .pipe(gulp.dest(dist))
   .pipe(livereload());

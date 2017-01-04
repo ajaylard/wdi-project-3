@@ -79,20 +79,38 @@
       }
     }
   }
-}
 
-@media screen and (max-width: 750px) {
-  .novelNew {
+  @media screen and (max-width: 750px) {
     .picture-container {
+      padding: 0;
       position: relative;
       width: 100%;
+      height: auto;
       overflow: hidden;
 
       img {
-        position: absolute;
+        position: relative;
         top: 0;
         width: 100%;
         height: auto;
+      }
+    }
+
+    .centered {
+      z-index: 5;
+      position: absolute;
+      left: 50%;
+      top: 25%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      #novelTitle {
+        margin-top: 50px;
+        font-size: 20px;
+        height: 20px;
+      }
+      button.btn.btn-default {
+        font-size: 10px;
+        width: 150px;
       }
     }
   }
