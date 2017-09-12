@@ -47,5 +47,16 @@
   },
   "engines": {
     "node": ">= 6.3.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajaylard/wdi-project-3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ajaylard/wdi-project-3/issues"
+  },
+  "homepage": "https://github.com/ajaylard/wdi-project-3#readme"
 }
