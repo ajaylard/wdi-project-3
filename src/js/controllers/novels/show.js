@@ -7,7 +7,7 @@ function NovelShowCtrl(Novel, $stateParams, $state, CurrentUserService, $locatio
   const vm = this;
   vm.user = CurrentUserService.getUser();
 
-  $(document).ready(function(){
+angular.element(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
     $("[autofocus]").focus();
     $(this).scrollTop(0);

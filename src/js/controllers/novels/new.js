@@ -6,6 +6,11 @@ NovelNewCtrl.$inject = ["Novel", "$state", 'RandomImage'];
 function NovelNewCtrl(Novel, $state, RandomImage){
   const vm  = this;
 
+  $(()=>{
+    $('#fakeStuff').find('input, textarea, button, select, a').attr('disabled','disabled');
+  });
+
+
   vm.novel = {};
   vm.novel.wordCount = 0;
   vm.countOf = countOf;
